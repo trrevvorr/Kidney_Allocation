@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0D1EF5051BE70A3200BD9584 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D1EF5041BE70A3200BD9584 /* main.cpp */; };
+		0D1EF50D1BE70E5300BD9584 /* Balanced_System.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D1EF50B1BE70E5300BD9584 /* Balanced_System.cpp */; };
+		0D1EF5111BE80AF500BD9584 /* Patient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D1EF50F1BE80AF500BD9584 /* Patient.cpp */; };
+		0D1EF5141BE811F000BD9584 /* Donor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D1EF5121BE811F000BD9584 /* Donor.cpp */; };
+		0D1EF5171BE814B000BD9584 /* Receiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D1EF5151BE814B000BD9584 /* Receiver.cpp */; };
+		0D1EF51A1BE81C5500BD9584 /* D_R_Pair.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D1EF5181BE81C5500BD9584 /* D_R_Pair.cpp */; };
+		0D1EF51D1BE820D500BD9584 /* Database.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D1EF51B1BE820D500BD9584 /* Database.cpp */; };
+		0D1EF5201BE8247200BD9584 /* Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D1EF51E1BE8247200BD9584 /* Functions.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +32,20 @@
 /* Begin PBXFileReference section */
 		0D1EF5011BE70A3200BD9584 /* Kidney_Transplant */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Kidney_Transplant; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D1EF5041BE70A3200BD9584 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		0D1EF50B1BE70E5300BD9584 /* Balanced_System.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Balanced_System.cpp; sourceTree = "<group>"; };
+		0D1EF50C1BE70E5300BD9584 /* Balanced_System.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Balanced_System.hpp; sourceTree = "<group>"; };
+		0D1EF50F1BE80AF500BD9584 /* Patient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Patient.cpp; sourceTree = "<group>"; };
+		0D1EF5101BE80AF500BD9584 /* Patient.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Patient.hpp; sourceTree = "<group>"; };
+		0D1EF5121BE811F000BD9584 /* Donor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Donor.cpp; sourceTree = "<group>"; };
+		0D1EF5131BE811F000BD9584 /* Donor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Donor.hpp; sourceTree = "<group>"; };
+		0D1EF5151BE814B000BD9584 /* Receiver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Receiver.cpp; sourceTree = "<group>"; };
+		0D1EF5161BE814B000BD9584 /* Receiver.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Receiver.hpp; sourceTree = "<group>"; };
+		0D1EF5181BE81C5500BD9584 /* D_R_Pair.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = D_R_Pair.cpp; sourceTree = "<group>"; };
+		0D1EF5191BE81C5500BD9584 /* D_R_Pair.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = D_R_Pair.hpp; sourceTree = "<group>"; };
+		0D1EF51B1BE820D500BD9584 /* Database.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Database.cpp; sourceTree = "<group>"; };
+		0D1EF51C1BE820D500BD9584 /* Database.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Database.hpp; sourceTree = "<group>"; };
+		0D1EF51E1BE8247200BD9584 /* Functions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Functions.cpp; sourceTree = "<group>"; };
+		0D1EF51F1BE8247200BD9584 /* Functions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Functions.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +79,20 @@
 			isa = PBXGroup;
 			children = (
 				0D1EF5041BE70A3200BD9584 /* main.cpp */,
+				0D1EF51B1BE820D500BD9584 /* Database.cpp */,
+				0D1EF51C1BE820D500BD9584 /* Database.hpp */,
+				0D1EF50B1BE70E5300BD9584 /* Balanced_System.cpp */,
+				0D1EF50C1BE70E5300BD9584 /* Balanced_System.hpp */,
+				0D1EF50F1BE80AF500BD9584 /* Patient.cpp */,
+				0D1EF5101BE80AF500BD9584 /* Patient.hpp */,
+				0D1EF5121BE811F000BD9584 /* Donor.cpp */,
+				0D1EF5131BE811F000BD9584 /* Donor.hpp */,
+				0D1EF5151BE814B000BD9584 /* Receiver.cpp */,
+				0D1EF5161BE814B000BD9584 /* Receiver.hpp */,
+				0D1EF5181BE81C5500BD9584 /* D_R_Pair.cpp */,
+				0D1EF5191BE81C5500BD9584 /* D_R_Pair.hpp */,
+				0D1EF51E1BE8247200BD9584 /* Functions.cpp */,
+				0D1EF51F1BE8247200BD9584 /* Functions.hpp */,
 			);
 			path = Kidney_Transplant;
 			sourceTree = "<group>";
@@ -118,7 +153,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D1EF5171BE814B000BD9584 /* Receiver.cpp in Sources */,
+				0D1EF51D1BE820D500BD9584 /* Database.cpp in Sources */,
+				0D1EF5141BE811F000BD9584 /* Donor.cpp in Sources */,
+				0D1EF5111BE80AF500BD9584 /* Patient.cpp in Sources */,
+				0D1EF50D1BE70E5300BD9584 /* Balanced_System.cpp in Sources */,
 				0D1EF5051BE70A3200BD9584 /* main.cpp in Sources */,
+				0D1EF51A1BE81C5500BD9584 /* D_R_Pair.cpp in Sources */,
+				0D1EF5201BE8247200BD9584 /* Functions.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
