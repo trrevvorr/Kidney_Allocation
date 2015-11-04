@@ -2,7 +2,7 @@
 //  main.cpp
 //  Kidney_Transplant
 //
-//  Created by Trevor Ross on 11/1/15.
+//  Created by Trevor Ross
 //  Copyright © 2015 Trevor Ross. All rights reserved.
 //
 
@@ -22,10 +22,10 @@ int main() {
 	Receiver r5 (132989222, "Tim", "Hill", "A+");
 	Receiver r6 (222989202, "Ryan", "Smith", "O+");
 	Receiver r7 (333989912, "Nate", "Willis", "A-");
-	Receiver r8 (454989812, "Seth", "Earty", "B+");
-	Receiver r9 (890989712, "Luke", "Mackle", "AB+");
+	Receiver r8 (454989812, "Seth", "Earty", "B-");
+	Receiver r9 (890989712, "Luke", "Mackle", "A-");
 	Receiver r10 (999989612, "Matt", "Celic", "B-");
-	Receiver r11 (888989512, "Brianne", "Portage", "O-");
+	Receiver r11 (888989512, "Brianne", "Portage", "O+");
 	Receiver r12 (289989412, "Taylor", "Sample", "B+");
 	Receiver r13 (242989312, "Marry", "Wired", "O-");
 	Receiver r14 (252989212, "Sandy", "Rever", "A-");
@@ -39,9 +39,9 @@ int main() {
 	Donor d6 (512882323, "Samuel", "Smith", "O-");
 	Donor d7 (212882323, "Addison", "Willis", "B-");
 	Donor d8 (612822323, "Gabriel", "Ethan", "A+");
-	Donor d9 (299992323, "Lillian", "Mason", "AB+");
+	Donor d9 (299992323, "Lillian", "Mason", "B+");
 	Donor d10 (912888212, "Joshua", "Liam", "A-");
-	Donor d11 (273339212, "John", "Michael", "AB-");
+	Donor d11 (273339212, "John", "Michael", "AB+");
 	Donor d12 (812987912, "Lucas", "Mia", "B-");
 	Donor d13 (112777772, "Victoria", "Madison", "O+");
 	Donor d14 (888888889, "Harper", "James", "A+");
@@ -70,11 +70,11 @@ int main() {
 	d.add_pair(d14, r14);
 	d.add_pair(d15, r15);
 	
-	d.print_patients(1);
+	d.print_patients();
 	
 	cout << "\n-------------------------------------------------\n\n";
 	d.build_system();
-	d.print_patients(1);
+	d.print_patients();
 	d.print_bal_sys();
 	
     return 0;

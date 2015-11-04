@@ -2,7 +2,7 @@
 //  Donor.hpp
 //  Kidney_Transplant
 //
-//  Created by Trevor Ross on 11/2/15.
+//  Created by Trevor Ross
 //  Copyright © 2015 Trevor Ross. All rights reserved.
 //
 
@@ -30,6 +30,13 @@ public:
 	{
 		contact_number = rand()%10000000;
 		contact_name = "Bob";
+	}
+	
+	friend ostream & operator << (ostream &out_stream, const Donor &d)
+	{
+		out_stream << static_cast<Patient>(d) <<
+				"\nContact Name: " << d.contact_name << " Contact #: " << d.contact_number;
+		return(out_stream);
 	}
 	
 	

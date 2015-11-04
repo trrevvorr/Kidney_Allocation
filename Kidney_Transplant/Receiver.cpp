@@ -2,7 +2,7 @@
 //  Receiver.cpp
 //  Kidney_Transplant
 //
-//  Created by Trevor Ross on 11/2/15.
+//  Created by Trevor Ross
 //  Copyright © 2015 Trevor Ross. All rights reserved.
 //
 

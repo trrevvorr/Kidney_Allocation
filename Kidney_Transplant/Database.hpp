@@ -2,7 +2,7 @@
 //  Database.hpp
 //  Kidney_Transplant
 //
-//  Created by Trevor Ross on 11/2/15.
+//  Created by Trevor Ross
 //  Copyright © 2015 Trevor Ross. All rights reserved.
 //
 
@@ -19,30 +19,26 @@
 class Database
 {
 public:
-	
-	// list<Patient> patient_list;
+	///// VARIABLES /////
 	list<Pair> d_r_pairs;
 	list<Donor> single_donors;
 	list<Receiver> single_receivers;
 	list<Balanced_Sys> balanced_systems;
 	
-//	Database(int num_patients);
-	
+	///// FUNCTIONS /////
 	void add_s_donor(Donor d);
 	void add_s_receiver(Receiver r);
 	void add_pair(Donor d, Receiver r);
 	
-	void print_patients(int detail=0);
-	void print_s_receivers(int detail);
-	void print_s_donors(int detail);
+	void print_patients();
+	void print_s_receivers();
+	void print_s_donors();
 	void print_pairs();
 	void print_bal_sys();
 	Pair lookup_pair(unsigned long pair_id);
 	
 	void build_system();
 	void update_database(Balanced_Sys &bal_sys);
-//	void find_match(const Receiver &last_receiver);
-//	list<Pair> find_compatible(const Receiver &r);
 };
 
 #endif /* Database_hpp */

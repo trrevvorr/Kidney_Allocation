@@ -2,7 +2,7 @@
 //  Functions.hpp
 //  Kidney_Transplant
 //
-//  Created by Trevor Ross on 11/2/15.
+//  Created by Trevor Ross on
 //  Copyright © 2015 Trevor Ross. All rights reserved.
 //
 
@@ -17,6 +17,5 @@
 //#include "Donor.hpp"
 using namespace std;
 
-//string random_name(char f_or_l);
 
 #endif /* Functions_hpp */

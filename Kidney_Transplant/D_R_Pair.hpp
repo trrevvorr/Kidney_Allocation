@@ -2,7 +2,7 @@
 //  D_R_Pair.hpp
 //  Kidney_Transplant
 //
-//  Created by Trevor Ross on 11/2/15.
+//  Created by Trevor Ross
 //  Copyright © 2015 Trevor Ross. All rights reserved.
 //
 
@@ -24,12 +24,11 @@ public:
 	
 	Pair(Donor given_d, Receiver given_r);
 	
-	void print();
-//	friend bool operator < (Pair &lhs, Pair &rhs)
-//	{
-//		// simply compare receivers
-//		return lhs.r < rhs.r;
-//	}
+	friend ostream & operator << (ostream &out_stream, const Pair &p)
+	{
+		out_stream << "Donor: \n" << p.d << "\nReceiver: \n" << p.r;
+		return(out_stream);
+	}
 	
 	bool operator==(const Pair &rhs) const {
 		if (id == rhs.id) {

@@ -2,7 +2,7 @@
 //  Receiver.hpp
 //  Kidney_Transplant
 //
-//  Created by Trevor Ross on 11/2/15.
+//  Created by Trevor Ross
 //  Copyright © 2015 Trevor Ross. All rights reserved.
 //
 
@@ -28,12 +28,16 @@ public:
 		date_added_to_waitlist = "12/25/1993";
 	}
 	
+	friend ostream & operator << (ostream &out_stream, const Receiver &r)
+	{
+		out_stream << static_cast<Patient>(r) <<
+					"\nDate Added: " << r.date_added_to_waitlist << " Weeks to Live: " <<
+					r.weeks_left_to_live;
+		return(out_stream);
+	}
 	
 	bool operator<(const Receiver &rhs) const {
-		if (weeks_left_to_live < rhs.weeks_left_to_live) {
-			return true;
-		}
-		return false;
+		return weeks_left_to_live < rhs.weeks_left_to_live;
 	}
 	
 };

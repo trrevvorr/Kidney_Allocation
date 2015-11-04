@@ -2,18 +2,11 @@
 //  Database.cpp
 //  Kidney_Transplant
 //
-//  Created by Trevor Ross on 11/2/15.
+//  Created by Trevor Ross
 //  Copyright © 2015 Trevor Ross. All rights reserved.
 //
 
 #include "Database.hpp"
-
-//Database::Database(int num_patients)
-//{
-//	for (int i = 0; i < num_patients; i++) {
-//		patient_list.push_back(Patient());
-//	}
-//}
 
 void Database::add_s_donor(Donor d)
 {
@@ -37,71 +30,35 @@ void Database::add_pair(Donor d, Receiver r)
 	d_r_pairs.push_back(Pair(d, r));
 }
 
-void Database::print_patients(int detail)
+void Database::print_patients()
 {
 	cout << "\n==== PRINTING ALL PATIENTS IN DB ====\n\n";
 	cout << "\n- Single Reciver -\n";
-	print_s_receivers(detail);
+	print_s_receivers();
 	cout << "\n- Single Donor -\n";
-	print_s_donors(detail);
+	print_s_donors();
 	cout << "\n- D_R_Pairs -\n";
 	print_pairs();
 	return;
 }
 
-void Database::print_s_receivers(int detail)
+void Database::print_s_receivers()
 {
 	list<Receiver>::iterator r_iter = single_receivers.begin();
 	
 	for (int i = 0; i < single_receivers.size(); i++) {
-		cout << "SSN: " << r_iter->ssn <<endl;
-		cout << "Name: " << r_iter->f_name << " " << r_iter->l_name << endl;
-		
-		if (detail > 0) {
-			cout << "Paired to: ";
-			if (r_iter->pair_id == 0) {cout << "no one\n";}
-			else
-			{
-				Pair p = lookup_pair(r_iter->pair_id);
-				if (p.d.ssn == r_iter->ssn)
-					cout << p.r.f_name << " " << p.r.l_name << endl;
-				else
-					cout << p.d.f_name << " " << p.d.l_name << endl;
-			}
-			cout << "Blood Type: " << r_iter->blood_type << endl;
-		}
-		if (detail > 1) {
-			cout << "Location: " << r_iter->adr_state << " " << r_iter->adr_zipcode << endl;
-		}
+		cout << *r_iter << endl;
 		r_iter++;
 	}
 	return;
 }
 
-void Database::print_s_donors(int detail)
+void Database::print_s_donors()
 {
 	list<Donor>::iterator d_iter = single_donors.begin();
 	
 	for (int i = 0; i < single_donors.size(); i++) {
-		cout << "SSN: " << d_iter->ssn <<endl;
-		cout << "Name: " << d_iter->f_name << " " << d_iter->l_name << endl;
-		
-		if (detail > 0) {
-			cout << "Paired to: ";
-			if (d_iter->pair_id == 0) {cout << "no one\n";}
-			else
-			{
-				Pair p = lookup_pair(d_iter->pair_id);
-				if (p.d.ssn == d_iter->ssn)
-					cout << p.r.f_name << " " << p.r.l_name << endl;
-				else
-					cout << p.d.f_name << " " << p.d.l_name << endl;
-			}
-			cout << "Blood Type: " << d_iter->blood_type << endl;
-		}
-		if (detail > 1) {
-			cout << "Location: " << d_iter->adr_state << " " << d_iter->adr_zipcode << endl;
-		}
+		cout << *d_iter << endl;
 		d_iter++;
 	}
 	return;
@@ -111,7 +68,7 @@ void Database::print_pairs()
 {
 	list<Pair>::iterator p_iter = d_r_pairs.begin();
 	for (int i = 0; i < d_r_pairs.size(); i++) {
-		p_iter->print();
+		cout << *p_iter << endl;
 		p_iter++;
 	}
 	return;
@@ -168,19 +125,19 @@ void Database::build_system()
 	
 	// iterate through all receivers, making a system for each
 	list<Receiver>::iterator r_iter = single_receivers.begin();
-	for (int i = 0; i < single_receivers.size(); i++)
+	unsigned long original_length = single_receivers.size();
+	for (int i = 0; i < original_length; i++)
 	{
 		bal_sys = Balanced_Sys();
 		// get the next receiver in list
 		bal_sys.single_receiver = *r_iter;
+		r_iter++;
 		// find system for receiver
 		bal_sys.find_match(d_r_pairs, single_donors);
 		if (bal_sys.balanced) {
 			balanced_systems.push_back(bal_sys);
 			update_database(bal_sys);
-			r_iter = single_receivers.begin();
 		}
-		else {r_iter++;}
 	}
 	return;
 }

@@ -2,7 +2,7 @@
 //  Balanced_System.cpp
 //  Kidney_Transplant
 //
-//  Created by Trevor Ross on 11/1/15.
+//  Created by Trevor Ross
 //  Copyright © 2015 Trevor Ross. All rights reserved.
 //
 
@@ -12,19 +12,18 @@ void Balanced_Sys::print()
 {
 	cout << "\n-- PRINTING BALANCED SYSTEM --\n\n";
 	cout << "\n- Single Reciver -\n";
-	single_receiver.print(1);
+	cout << single_receiver << endl;
 	cout << "\n- D_R_Pairs -\n";
 	list<Pair>::iterator p_iter = pair_list.begin();
 	for (int i = 0; i < pair_list.size(); i++) {
-		p_iter->print();
+		cout << *p_iter << endl;
 		p_iter++;
 	}
 	cout << "\n- Single Donor -\n";
-	single_donor.print(1);
+	cout << single_donor << endl;
 	return;
 }
 
-// Accepts a single reciever and returns a list of pairs if
 void Balanced_Sys::find_match(list<Pair> d_r_pairs, list<Donor> &single_donors)
 {
 	list<Pair> compatible_pairs = find_compatible(single_receiver, d_r_pairs);
