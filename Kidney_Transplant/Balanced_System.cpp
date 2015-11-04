@@ -8,6 +8,21 @@
 
 #include "Balanced_System.hpp"
 
+void Balanced_Sys::print()
+{
+	cout << "\n-- PRINTING BALANCED SYSTEM --\n\n";
+	cout << "\n- Single Reciver -\n";
+	single_receiver.print();
+	cout << "\n- D_R_Pairs -\n";
+	list<Pair>::iterator p_iter = pair_list.begin();
+	for (int i = 0; i < pair_list.size(); i++) {
+		p_iter->print();
+		p_iter++;
+	}
+	cout << "\n- Single Donor -\n";
+	single_donor.print();
+	return;
+}
 
 // Accepts a single reciever and returns a list of pairs if
 void Balanced_Sys::find_match(list<Pair> d_r_pairs, list<Donor> &single_donors)
@@ -17,7 +32,7 @@ void Balanced_Sys::find_match(list<Pair> d_r_pairs, list<Donor> &single_donors)
 	list<Pair> max_child_pairs;
 	
 	Receiver last_receiver = single_receiver;
-	bool pairs_found = 0;
+	unsigned long pairs_found = 0;
 	
 	// if there is a pair for the reciever
 	if (compatible_pairs.size() > 0) {
@@ -32,17 +47,13 @@ void Balanced_Sys::find_match(list<Pair> d_r_pairs, list<Donor> &single_donors)
 		}
 		if (max_child_pairs.size() > 0) {
 			// add pairs to d_r_pairs!
-			d_r_pairs = max_child_pairs;
-			list<Pair>::iterator last_pair = d_r_pairs.end();
-			last_receiver = last_pair->r;
-			pairs_found = d_r_pairs.size();
+			pair_list = max_child_pairs;
+			Pair last_pair = pair_list.back();
+			last_receiver = last_pair.r;
+			pairs_found = pair_list.size();
 		}
 	}
 	
-	
-	if (d_r_pairs.size() > 0) {
-		
-	}
 	list<Donor>::iterator d_iter = single_donors.begin();
 	for (int i = 0; i < single_donors.size(); i++) {
 		if (compatible(last_receiver, *d_iter)) {
@@ -53,6 +64,9 @@ void Balanced_Sys::find_match(list<Pair> d_r_pairs, list<Donor> &single_donors)
 	}
 	
 	cout << pairs_found << " PAIRS FOUND! SUCESS!!!\n";
+	cout << "THIS SYSTEM IS ";
+	if (!balanced) { cout << "NOT ";}
+	cout << " BALANCED!!!\n";
 	return;
 }
 

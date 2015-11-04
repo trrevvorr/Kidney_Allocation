@@ -17,13 +17,13 @@
 
 void Database::add_s_donor(Donor d)
 {
-	patient_list.push_back(d);
+	//patient_list.push_back(d);
 	single_donors.push_back(d);
 }
 
 void Database::add_s_receiver(Receiver r)
 {
-	patient_list.push_back(r);
+	//patient_list.push_back(r);
 	single_receivers.push_back(r);
 }
 
@@ -32,42 +32,99 @@ void Database::add_pair(Donor d, Receiver r)
 	d.pair_id = d_r_pairs.size();
 	r.pair_id = d_r_pairs.size();
 	
-	patient_list.push_back(d);
-	patient_list.push_back(r);
+	//patient_list.push_back(d);
+	//patient_list.push_back(r);
 	d_r_pairs.push_back(Pair(d, r));
 }
 
-void Database::print(int detail)
+void Database::print_patients(int detail)
 {
-	list<Patient>::iterator p_iter = patient_list.begin();
+	cout << "\n==== PRINTING ALL PATIENTS IN DB ====\n\n";
+	cout << "\n- Single Reciver -\n";
+	print_s_receivers(detail);
+	cout << "\n- Single Donor -\n";
+	print_s_donors(detail);
+	cout << "\n- D_R_Pairs -\n";
+	print_pairs();
+	return;
+}
+
+void Database::print_s_receivers(int detail)
+{
+	list<Receiver>::iterator r_iter = single_receivers.begin();
 	
-	for (int i = 0; i < patient_list.size(); i++) {
-		cout << "SSN: " << p_iter->ssn <<endl;
-		cout << "Name: " << p_iter->f_name << " " << p_iter->l_name << endl;
+	for (int i = 0; i < single_receivers.size(); i++) {
+		cout << "SSN: " << r_iter->ssn <<endl;
+		cout << "Name: " << r_iter->f_name << " " << r_iter->l_name << endl;
 		
 		if (detail > 0) {
 			cout << "Paired to: ";
-			if (p_iter->pair_id == -1) {cout << "no one\n";}
+			if (r_iter->pair_id == -1) {cout << "no one\n";}
 			else
 			{
-				Pair p = lookup_pair(p_iter->pair_id);
-				if (p.d.ssn == p_iter->ssn)
+				Pair p = lookup_pair(r_iter->pair_id);
+				if (p.d.ssn == r_iter->ssn)
 					cout << p.r.f_name << " " << p.r.l_name << endl;
 				else
 					cout << p.d.f_name << " " << p.d.l_name << endl;
-				
 			}
-			cout << "Blood Type: " << p_iter->blood_type << endl;
+			cout << "Blood Type: " << r_iter->blood_type << endl;
 		}
-		
 		if (detail > 1) {
-			cout << "Location: " << p_iter->adr_state << " " << p_iter->adr_zipcode << endl;
+			cout << "Location: " << r_iter->adr_state << " " << r_iter->adr_zipcode << endl;
 		}
-		cout << endl;
+		r_iter++;
+	}
+	return;
+}
+
+void Database::print_s_donors(int detail)
+{
+	list<Donor>::iterator d_iter = single_donors.begin();
+	
+	for (int i = 0; i < single_donors.size(); i++) {
+		cout << "SSN: " << d_iter->ssn <<endl;
+		cout << "Name: " << d_iter->f_name << " " << d_iter->l_name << endl;
 		
+		if (detail > 0) {
+			cout << "Paired to: ";
+			if (d_iter->pair_id == -1) {cout << "no one\n";}
+			else
+			{
+				Pair p = lookup_pair(d_iter->pair_id);
+				if (p.d.ssn == d_iter->ssn)
+					cout << p.r.f_name << " " << p.r.l_name << endl;
+				else
+					cout << p.d.f_name << " " << p.d.l_name << endl;
+			}
+			cout << "Blood Type: " << d_iter->blood_type << endl;
+		}
+		if (detail > 1) {
+			cout << "Location: " << d_iter->adr_state << " " << d_iter->adr_zipcode << endl;
+		}
+		d_iter++;
+	}
+	return;
+}
+
+void Database::print_pairs()
+{
+	list<Pair>::iterator p_iter = d_r_pairs.begin();
+	for (int i = 0; i < d_r_pairs.size(); i++) {
+		p_iter->print();
 		p_iter++;
 	}
 	return;
+}
+
+void Database::print_bal_sys()
+{
+	cout << "\n==== PRINTING BALANCED SYSTEMS ====\n\n";
+	list<Balanced_Sys>::iterator bs_iter = balanced_systems.begin();
+	for (int i = 0; i < balanced_systems.size(); i++) {
+		bs_iter->print();
+		bs_iter++;
+	}
 }
 
 Pair Database::lookup_pair(unsigned long id)
@@ -133,8 +190,8 @@ void Database::update_database(Balanced_Sys &bal_sys)
 	// remove single receiver
 	single_receivers.remove(bal_sys.single_receiver);
 	// remove all the pairs
-	list<Pair>::iterator p_iter = bal_sys.d_r_pairs.begin();
-	for (int i = 0; i < bal_sys.d_r_pairs.size(); i++) {
+	list<Pair>::iterator p_iter = bal_sys.pair_list.begin();
+	for (int i = 0; i < bal_sys.pair_list.size(); i++) {
 		d_r_pairs.remove(*p_iter);
 		p_iter++;
 	}

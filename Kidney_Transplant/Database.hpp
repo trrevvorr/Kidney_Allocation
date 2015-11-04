@@ -20,7 +20,7 @@ class Database
 {
 public:
 	
-	list<Patient> patient_list;
+	// list<Patient> patient_list;
 	list<Pair> d_r_pairs;
 	list<Donor> single_donors;
 	list<Receiver> single_receivers;
@@ -32,7 +32,11 @@ public:
 	void add_s_receiver(Receiver r);
 	void add_pair(Donor d, Receiver r);
 	
-	void print(int detail=0);
+	void print_patients(int detail=0);
+	void print_s_receivers(int detail);
+	void print_s_donors(int detail);
+	void print_pairs();
+	void print_bal_sys();
 	Pair lookup_pair(unsigned long pair_id);
 	
 	void build_system();

@@ -24,6 +24,7 @@ public:
 	
 	Pair(Donor given_d, Receiver given_r);
 	
+	void print();
 //	friend bool operator < (Pair &lhs, Pair &rhs)
 //	{
 //		// simply compare receivers

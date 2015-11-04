@@ -14,3 +14,12 @@ Pair::Pair(Donor given_d, Receiver given_r)
 	r = given_r;
 	id = d.pair_id;
 }
+
+void Pair::print()
+{
+	cout << "Donor: \n";
+	d.print();
+	cout << "Receiver: \n";
+	r.print();
+	return;
+}

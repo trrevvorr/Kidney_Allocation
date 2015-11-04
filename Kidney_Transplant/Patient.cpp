@@ -39,7 +39,6 @@ void Patient::print(int detail)
 	if (detail > 1) {
 		cout << "Location: " << adr_state << " " << adr_zipcode << endl;
 	}
-	cout << endl;
 	
 	return;
 }

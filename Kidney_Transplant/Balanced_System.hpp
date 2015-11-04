@@ -21,7 +21,7 @@ class Balanced_Sys
 {
 public:
 	Receiver single_receiver;
-	list<Pair> d_r_pairs;
+	list<Pair> pair_list;
 	Donor single_donor;
 	// type 1 = s_receiver <- (d_r_pairs*) <- s_donor
 	// type 2 = circut of d_r_pairs (s donor and reciever not used)
@@ -29,6 +29,8 @@ public:
 	bool balanced;
 	
 	Balanced_Sys():balanced(false),type(0){}
+	
+	void print();
 	
 //	bool add_pair(const Donor &d);
 //	bool compatible(const Receiver &r, const Donor &d);

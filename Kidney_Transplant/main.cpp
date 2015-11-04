@@ -30,9 +30,12 @@ int main() {
 	d.add_pair(d3, r3);
 	d.add_pair(d4, r4);
 	
-	d.print(1);
+	d.print_patients(1);
 	
 	d.build_system();
+	cout << "\n-------------------------------------------------\n\n";
+	d.print_patients();
+	d.print_bal_sys();
 	
     return 0;
 }
