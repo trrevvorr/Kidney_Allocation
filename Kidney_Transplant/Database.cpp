@@ -29,8 +29,8 @@ void Database::add_s_receiver(Receiver r)
 
 void Database::add_pair(Donor d, Receiver r)
 {
-	d.pair_id = d_r_pairs.size();
-	r.pair_id = d_r_pairs.size();
+	d.pair_id = d_r_pairs.size()+1;
+	r.pair_id = d_r_pairs.size()+1;
 	
 	//patient_list.push_back(d);
 	//patient_list.push_back(r);
@@ -59,7 +59,7 @@ void Database::print_s_receivers(int detail)
 		
 		if (detail > 0) {
 			cout << "Paired to: ";
-			if (r_iter->pair_id == -1) {cout << "no one\n";}
+			if (r_iter->pair_id == 0) {cout << "no one\n";}
 			else
 			{
 				Pair p = lookup_pair(r_iter->pair_id);
@@ -88,7 +88,7 @@ void Database::print_s_donors(int detail)
 		
 		if (detail > 0) {
 			cout << "Paired to: ";
-			if (d_iter->pair_id == -1) {cout << "no one\n";}
+			if (d_iter->pair_id == 0) {cout << "no one\n";}
 			else
 			{
 				Pair p = lookup_pair(d_iter->pair_id);
@@ -178,8 +178,9 @@ void Database::build_system()
 		if (bal_sys.balanced) {
 			balanced_systems.push_back(bal_sys);
 			update_database(bal_sys);
+			r_iter = single_receivers.begin();
 		}
-		r_iter++;
+		else {r_iter++;}
 	}
 	return;
 }

@@ -21,12 +21,16 @@ public:
 	int contact_number;
 	
 	Donor(): contact_name("none"), contact_number(1234567){}
-	Donor(string f_name, string l_name) : Patient(f_name, l_name)
+//	Donor(string f_name, string l_name) : Patient(f_name, l_name)
+//	{
+//		contact_number = rand()%10000000;
+//		contact_name = "Bob";
+//	}
+	Donor(int ssn, string f_name, string l_name, string blood_type) : Patient(ssn, f_name, l_name, blood_type)
 	{
 		contact_number = rand()%10000000;
 		contact_name = "Bob";
 	}
-//	Donor(int ssn, string f_name, string l_name, string blood_type, string adr_state, int adr_zipcode, int pair_id=-1, string contact_name="none");
 	
 	
 };

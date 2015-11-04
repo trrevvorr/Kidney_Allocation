@@ -8,19 +8,19 @@
 
 #include "Patient.hpp"
 
-Patient::Patient(string first, string last, string b_type, string state, int zipcode, int p_id)
+Patient::Patient(int SSN, string first, string last, string b_type)
 {
 	// verify that ssn is 9 digits
-	ssn = rand()%1000000000;
+	ssn = SSN;
 	f_name = first;
 	l_name = last;
 	// verify blood type is acceptible
 	blood_type = b_type;
 	// verify that adr_state is acceptable
-	adr_state = state;
+	adr_state = "MO";
 	// verify that adr_zipcode is acceptable
-	adr_zipcode = zipcode;
-	pair_id = p_id;
+	adr_zipcode = 63755;
+	pair_id = 0;
 }
 
 void Patient::print(int detail)
@@ -30,7 +30,7 @@ void Patient::print(int detail)
 	
 	if (detail > 0) {
 		cout << "Paired to: ";
-		if (pair_id == -1) {cout << "no one\n";}
+		if (pair_id == 0) {cout << "no one\n";}
 		else{cout << pair_id << endl;}
 		
 		cout << "Blood Type: " << blood_type << endl;

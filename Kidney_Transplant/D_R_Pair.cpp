@@ -18,8 +18,8 @@ Pair::Pair(Donor given_d, Receiver given_r)
 void Pair::print()
 {
 	cout << "Donor: \n";
-	d.print();
+	d.print(1);
 	cout << "Receiver: \n";
-	r.print();
+	r.print(1);
 	return;
 }

@@ -12,7 +12,7 @@ void Balanced_Sys::print()
 {
 	cout << "\n-- PRINTING BALANCED SYSTEM --\n\n";
 	cout << "\n- Single Reciver -\n";
-	single_receiver.print();
+	single_receiver.print(1);
 	cout << "\n- D_R_Pairs -\n";
 	list<Pair>::iterator p_iter = pair_list.begin();
 	for (int i = 0; i < pair_list.size(); i++) {
@@ -20,7 +20,7 @@ void Balanced_Sys::print()
 		p_iter++;
 	}
 	cout << "\n- Single Donor -\n";
-	single_donor.print();
+	single_donor.print(1);
 	return;
 }
 
@@ -63,7 +63,7 @@ void Balanced_Sys::find_match(list<Pair> d_r_pairs, list<Donor> &single_donors)
 		d_iter++;
 	}
 	
-	cout << pairs_found << " PAIRS FOUND! SUCESS!!!\n";
+	cout << pairs_found << " PAIRS FOUND!\n";
 	cout << "THIS SYSTEM IS ";
 	if (!balanced) { cout << "NOT ";}
 	cout << " BALANCED!!!\n";
