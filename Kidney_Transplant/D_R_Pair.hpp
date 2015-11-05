@@ -24,19 +24,18 @@ public:
 	
 	Pair(Donor given_d, Receiver given_r);
 	
+	/// OVERLOADED OPERATORS ///
 	friend ostream & operator << (ostream &out_stream, const Pair &p)
 	{
 		out_stream << "Donor: \n" << p.d << "\nReceiver: \n" << p.r;
 		return(out_stream);
 	}
-	
 	bool operator==(const Pair &rhs) const {
 		if (id == rhs.id) {
 			return true;
 		}
 		return false;
 	}
-	
 	bool operator<(const Pair &rhs) const {
 		if (r < rhs.r) {
 			return true;

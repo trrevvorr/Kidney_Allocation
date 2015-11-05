@@ -11,10 +11,26 @@
 #include "Database.hpp"
 using namespace std;
 
+void build_db1(Database & d);
+void build_db2(Database & d);
+
 int main() {
 	srand(time(NULL));
-	
 	Database d;
+	
+	build_db2(d);
+	
+	d.print_patients();
+	cout << "\n---------------------- Post - Build ---------------------------\n\n";
+	d.build_system();
+	d.print_patients();
+	d.print_bal_sys();
+	
+    return 0;
+}
+
+void build_db1(Database & d)
+{
 	Receiver r1 (212989282, "Tom", "Smith", "A+");
 	Receiver r2 (555989252, "George", "Town", "O+");
 	Receiver r3 (789989242, "Larry", "Mart", "B+");
@@ -70,12 +86,50 @@ int main() {
 	d.add_pair(d14, r14);
 	d.add_pair(d15, r15);
 	
-	d.print_patients();
+	return;
+}
+
+void build_db2(Database & d)
+{
+	Receiver r1 (212989282, "Tom", "Smith", "A+", 1);
+	Receiver r2 (555989252, "George", "Town", "A-", 2);
+	Receiver r3 (789989242, "Larry", "Mart", "AB-", 3);
 	
-	cout << "\n-------------------------------------------------\n\n";
-	d.build_system();
-	d.print_patients();
-	d.print_bal_sys();
+	Receiver r4 (787989232, "Chuck", "Lake", "A-", 4);
+	Receiver r5 (132989222, "Tim", "Hill", "B+", 5);
+	Receiver r6 (222989202, "Ryan", "Smith", "O+", 6);
+	Receiver r7 (333989912, "Nate", "Willis", "O-", 7);
+	Receiver r8 (454989812, "Seth", "Earty", "A-", 8);
+	Receiver r9 (890989712, "Luke", "Mackle", "AB+", 9);
+	Receiver r10 (999989612, "Matt", "Celic", "A-", 10);
 	
-    return 0;
+	Donor d1 (765599212, "Aubrey", "Elijah", "A-");
+	Donor d2 (365599262, "Grace", "Town", "A+");
+	Donor d3 (965599152, "Zoey", "Benjamin", "O-");
+	
+	Donor d4 (865599682, "Andrew", "Logan", "A+");
+	Donor d5 (565599292, "Natalie", "William", "A+");
+	Donor d6 (512882323, "Samuel", "Smith", "A+");
+	Donor d7 (212882323, "Addison", "Willis", "B+");
+	Donor d8 (612822323, "Gabriel", "Ethan", "O+");
+	Donor d9 (299992323, "Lillian", "Mason", "O-");
+	Donor d10 (912888212, "Joshua", "Liam", "A+");
+	
+	d.add_s_donor(d1);
+	d.add_s_donor(d2);
+	d.add_s_donor(d3);
+	
+	d.add_s_receiver(r1);
+	d.add_s_receiver(r2);
+	d.add_s_receiver(r3);
+	
+	d.add_pair(d4, r4);
+	d.add_pair(d5, r5);
+	d.add_pair(d6, r6);
+	d.add_pair(d7, r7);
+	d.add_pair(d8, r8);
+	d.add_pair(d9, r9);
+	d.add_pair(d10, r10);
+
+	return;
 }

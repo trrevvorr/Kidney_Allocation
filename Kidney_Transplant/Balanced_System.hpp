@@ -33,6 +33,7 @@ public:
 	
 	// Prints out the balanced system
 	void print();
+	void print_simple();
 	
 	// Step 1: iterate thorugh all compatible pairs to single_receiver,
 	// tries to find system starting with each one of the c-pairs

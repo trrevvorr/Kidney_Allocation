@@ -24,6 +24,19 @@ void Balanced_Sys::print()
 	return;
 }
 
+void Balanced_Sys::print_simple()
+{
+	cout << "\n-- SIMPLE PRINTING BALANCED SYSTEM --\n\n";
+	cout << "[" << single_receiver.f_name[0] << single_receiver.l_name[0] << "] <- ";
+	list<Pair>::iterator p_iter = pair_list.begin();
+	for (int i = 0; i < pair_list.size(); i++) {
+		cout << "[" << p_iter->d.f_name[0] << p_iter->d.l_name[0] << "|" <<
+			p_iter->r.f_name[0] << p_iter->r.l_name[0] << "] <- ";
+		p_iter++;
+	}
+	cout << "[" << single_donor.f_name[0] << single_donor.l_name[0] << "]\n";
+}
+
 void Balanced_Sys::find_match(list<Pair> d_r_pairs, list<Donor> &single_donors)
 {
 	list<Pair> compatible_pairs = find_compatible(single_receiver, d_r_pairs);
@@ -58,6 +71,7 @@ void Balanced_Sys::find_match(list<Pair> d_r_pairs, list<Donor> &single_donors)
 		if (compatible(last_receiver, *d_iter)) {
 			single_donor = *d_iter;
 			balanced = true;
+			break;
 		}
 		d_iter++;
 	}

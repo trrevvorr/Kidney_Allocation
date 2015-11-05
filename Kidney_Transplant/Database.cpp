@@ -10,24 +10,23 @@
 
 void Database::add_s_donor(Donor d)
 {
-	//patient_list.push_back(d);
 	single_donors.push_back(d);
+	return;
 }
 
 void Database::add_s_receiver(Receiver r)
 {
-	//patient_list.push_back(r);
 	single_receivers.push_back(r);
+	return;
 }
 
 void Database::add_pair(Donor d, Receiver r)
 {
 	d.pair_id = d_r_pairs.size()+1;
 	r.pair_id = d_r_pairs.size()+1;
-	
-	//patient_list.push_back(d);
-	//patient_list.push_back(r);
+
 	d_r_pairs.push_back(Pair(d, r));
+	return;
 }
 
 void Database::print_patients()
@@ -46,9 +45,8 @@ void Database::print_s_receivers()
 {
 	list<Receiver>::iterator r_iter = single_receivers.begin();
 	
-	for (int i = 0; i < single_receivers.size(); i++) {
+	for (int i = 0; i < single_receivers.size(); i++, r_iter++) {
 		cout << *r_iter << endl;
-		r_iter++;
 	}
 	return;
 }
@@ -57,9 +55,8 @@ void Database::print_s_donors()
 {
 	list<Donor>::iterator d_iter = single_donors.begin();
 	
-	for (int i = 0; i < single_donors.size(); i++) {
+	for (int i = 0; i < single_donors.size(); i++, d_iter++) {
 		cout << *d_iter << endl;
-		d_iter++;
 	}
 	return;
 }
@@ -67,9 +64,8 @@ void Database::print_s_donors()
 void Database::print_pairs()
 {
 	list<Pair>::iterator p_iter = d_r_pairs.begin();
-	for (int i = 0; i < d_r_pairs.size(); i++) {
+	for (int i = 0; i < d_r_pairs.size(); i++, p_iter++) {
 		cout << *p_iter << endl;
-		p_iter++;
 	}
 	return;
 }
@@ -77,11 +73,12 @@ void Database::print_pairs()
 void Database::print_bal_sys()
 {
 	cout << "\n==== PRINTING BALANCED SYSTEMS ====\n\n";
+	
 	list<Balanced_Sys>::iterator bs_iter = balanced_systems.begin();
-	for (int i = 0; i < balanced_systems.size(); i++) {
-		bs_iter->print();
-		bs_iter++;
+	for (int i = 0; i < balanced_systems.size(); i++, bs_iter++) {
+		bs_iter->print_simple();
 	}
+	return;
 }
 
 Pair Database::lookup_pair(unsigned long id)
