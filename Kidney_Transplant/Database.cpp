@@ -8,18 +8,22 @@
 
 #include "Database.hpp"
 
+// PURPOSE: add a single donor to the database
 void Database::add_s_donor(Donor d)
 {
 	single_donors.push_back(d);
 	return;
 }
 
+// PURPOSE: add a single receiver to the database
 void Database::add_s_receiver(Receiver r)
 {
 	single_receivers.push_back(r);
 	return;
 }
 
+// PURPOSE: add a pair to the database
+// also generates a pair ID
 void Database::add_pair(Donor d, Receiver r)
 {
 	d.pair_id = d_r_pairs.size()+1;
@@ -29,6 +33,8 @@ void Database::add_pair(Donor d, Receiver r)
 	return;
 }
 
+// PURPOSE: print all the unmatched patinets in the database (s-receivers, s-donors, pairs)
+// NOTE: patients who were added to a balanced system are removed from patient lists
 void Database::print_patients()
 {
 	cout << "\n==== PRINTING ALL PATIENTS IN DB ====\n\n";
@@ -41,6 +47,7 @@ void Database::print_patients()
 	return;
 }
 
+// PURPOSE: print all the unmatched single receivers in the database
 void Database::print_s_receivers()
 {
 	list<Receiver>::iterator r_iter = single_receivers.begin();
@@ -51,6 +58,7 @@ void Database::print_s_receivers()
 	return;
 }
 
+// PURPOSE: prints all unmatched single donors in the database
 void Database::print_s_donors()
 {
 	list<Donor>::iterator d_iter = single_donors.begin();
@@ -61,6 +69,7 @@ void Database::print_s_donors()
 	return;
 }
 
+// PURPOSE: prints all the unmatched pairs in the database
 void Database::print_pairs()
 {
 	list<Pair>::iterator p_iter = d_r_pairs.begin();
@@ -70,6 +79,8 @@ void Database::print_pairs()
 	return;
 }
 
+// PURPOSE: prints all the blanced systems in the database
+// NOTE: d_r_pairs U single_donors U single_receivers U balanced_systems = database
 void Database::print_bal_sys()
 {
 	cout << "\n==== PRINTING BALANCED SYSTEMS ====\n\n";
@@ -81,6 +92,7 @@ void Database::print_bal_sys()
 	return;
 }
 
+// PURPOSE: looks up a pair by its pair_id and returns that pair
 Pair Database::lookup_pair(unsigned long id)
 {
 	list<Pair>::iterator p_iter = d_r_pairs.begin();
@@ -91,6 +103,7 @@ Pair Database::lookup_pair(unsigned long id)
 		p_iter++;
 	}
 	cout << "ERROR!!! PAIR ID NOT FOUND: " << id << endl;
+	cout << "JUNK PAIR RETURNED" << endl;
 	return *p_iter;
 }
 
@@ -101,22 +114,13 @@ Pair Database::lookup_pair(unsigned long id)
 // s_receicer <- (p_donor | p_receiver)* <- s_donor
 // where s_receiver is a single receiver, s_donor is single donor
 // p_receiver is paired receiver, paired with the paired donor on other side of "|"
-// "*" means there can be any number of [D/R Pairs], regular expression notation
-
-// Balanced systems can take two forms
-// [s_r] <- [p_d | p_r]* <- [s_d]
-// this is the form this algorithm handles
-// /-<- [p_d | p_r]* <- [p_d | p_r] <-\
-// \---->--->--->--->--->--->--->-->--/
-// this is the loop variety and should be attainable with slight modifications
-// to this algorithm
-
-// This only finds balanced systems that start with a single receiver
-// and end with a single donor
+// "*" means there can be any number of [D/R Pairs], (regular expression notation)
 void Database::build_system()
 {
+	// blank balanced system to be filled by algorithm
 	Balanced_Sys bal_sys;
 
+	// sort the s_receievers and pairs by how many weeks the receiver has to live (increasing)
 	single_receivers.sort();
 	d_r_pairs.sort();
 	
@@ -125,6 +129,7 @@ void Database::build_system()
 	unsigned long original_length = single_receivers.size();
 	for (int i = 0; i < original_length; i++)
 	{
+		// clear out the old balnaced system to make way for the new one
 		bal_sys = Balanced_Sys();
 		// get the next receiver in list
 		bal_sys.single_receiver = *r_iter;
@@ -132,6 +137,8 @@ void Database::build_system()
 		// find system for receiver
 		bal_sys.find_match(d_r_pairs, single_donors);
 		if (bal_sys.balanced) {
+			// if a balanced system was found, add it to the list
+			// and remove patients from patient lists
 			balanced_systems.push_back(bal_sys);
 			update_database(bal_sys);
 		}
@@ -139,7 +146,8 @@ void Database::build_system()
 	return;
 }
 
-
+// PURPOSE: remove patients who are part of the balanced system from the patient
+// lists in the database
 void Database::update_database(Balanced_Sys &bal_sys)
 {
 	// remove single receiver

@@ -26,17 +26,19 @@ public:
 	list<Balanced_Sys> balanced_systems;
 	
 	///// FUNCTIONS /////
+	// add patient functions
 	void add_s_donor(Donor d);
 	void add_s_receiver(Receiver r);
 	void add_pair(Donor d, Receiver r);
-	
+	// print functions
 	void print_patients();
 	void print_s_receivers();
 	void print_s_donors();
 	void print_pairs();
 	void print_bal_sys();
+	// lookup a pair by its ID
 	Pair lookup_pair(unsigned long pair_id);
-	
+	// build balanced sysyems and update the database
 	void build_system();
 	void update_database(Balanced_Sys &bal_sys);
 };

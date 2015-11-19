@@ -18,17 +18,23 @@ int main() {
 	srand(time(NULL));
 	Database d;
 	
+	// fill the databse with patients
 	build_db2(d);
-	
+	// print out the patients in the database
 	d.print_patients();
-	cout << "\n---------------------- Post - Build ---------------------------\n\n";
+	// build all possible balanced systems
 	d.build_system();
+	cout << "\n---------------------- Post - Build ---------------------------\n\n";
+	// print out the patients STILL in the database (not part of balanced system)
 	d.print_patients();
+	// print all balanced systems
 	d.print_bal_sys();
 	
     return 0;
 }
 
+// builds a db with 5 single donors, 5 single receivers, and 10 pairs
+// reciever urgentcy randomly generated
 void build_db1(Database & d)
 {
 	Receiver r1 (212989282, "Tom", "Smith", "A+");
@@ -89,6 +95,9 @@ void build_db1(Database & d)
 	return;
 }
 
+// builds db with 3 single donors, 3 single receivers, and 7 pairs
+// receiver urgentcy and blood types chosen to test specific edge cases
+// optimal solution: [TS] <- [NW|TH] <- [AW|NW] <- [ZB] -AND- [GT] <- [AE]
 void build_db2(Database & d)
 {
 	Receiver r1 (212989282, "Tom", "Smith", "A+", 1);
@@ -133,3 +142,11 @@ void build_db2(Database & d)
 
 	return;
 }
+
+
+
+///////////////////////////////////////////////////////////////////////////
+////// TO DO ////////
+// add comments
+// make everything constant that needs it
+// remove unnessisary stuff
