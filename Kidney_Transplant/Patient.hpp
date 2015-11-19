@@ -17,14 +17,16 @@ using namespace std;
 class Patient
 {
 public:
-	int ssn; // must be 9 digits long
+	///// VARIABLES /////
+	int ssn;
 	string f_name;
 	string l_name;
 	string blood_type;
 	string adr_state;
-	int adr_zipcode; // must be 5 digits long
-	unsigned long pair_id; // defaults to -1 meaning no pair
+	int adr_zipcode;
+	unsigned long pair_id; // defaults to 0 meaning no pair
 	
+	///// CONSTRUCTORS /////
 	Patient(): ssn(123456789), f_name("none"), l_name("none"), blood_type("none"), adr_state("none"), adr_zipcode(12345), pair_id(0){}
 	Patient(int ssn, string f_name, string l_name, string blood_type="O+");
 	

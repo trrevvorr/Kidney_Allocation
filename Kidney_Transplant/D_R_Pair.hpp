@@ -18,10 +18,12 @@ using namespace std;
 class Pair
 {
 public:
+	///// VARIABLES /////
 	Donor d;
 	Receiver r;
 	unsigned long id;
 	
+	///// CONSTRUCTOR /////
 	Pair(Donor given_d, Receiver given_r);
 	
 	/// OVERLOADED OPERATORS ///
@@ -36,11 +38,9 @@ public:
 		}
 		return false;
 	}
+	// used to sort pair lists with .sort()
 	bool operator<(const Pair &rhs) const {
-		if (r < rhs.r) {
-			return true;
-		}
-		return false;
+		return (r < rhs.r);
 	}
 };
 

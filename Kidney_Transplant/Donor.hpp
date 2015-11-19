@@ -17,9 +17,11 @@ using namespace std;
 class Donor : public Patient
 {
 public:
+	///// VARIABLES /////
 	string contact_name;
 	int contact_number;
 	
+	///// CONSTRUCTORS /////
 	Donor(): contact_name("none"), contact_number(1234567){}
 	Donor(int ssn, string f_name, string l_name, string blood_type) : Patient(ssn, f_name, l_name, blood_type)
 	{
